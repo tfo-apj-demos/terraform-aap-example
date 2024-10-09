@@ -2,6 +2,7 @@ module "single-virtual-machine" {
   source  = "app.terraform.io/tfo-apj-demos/single-virtual-machine/vsphere"
   version = "~> 1"
 
+  ad_domain        = "example.com"
   backup_policy    = "daily"
   environment      = "dev"
   os_type          = "linux"

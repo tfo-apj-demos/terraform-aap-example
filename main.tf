@@ -31,6 +31,18 @@ resource "aap_group" "vm_groups" {
   variables    = jsonencode({ "environment" : each.value.environment, "site" : each.value.site })
 }
 
+resource "aap_host" "vm_hosts" {
+  for_each = local.vm_config
 
-
-
+  inventory_id = aap_inventory.vm_inventory.id
+  name         = each.value.hostname  # Use the hostname for each VM
+  variables    = jsonencode({
+    "backup_policy"    : each.value.backup_policy,
+    "os_type"          : each.value.os_type,
+    "storage_profile"  : each.value.storage_profile,
+    "tier"             : each.value.tier
+  })
+  
+  # Associate each host with its respective group based on security profile
+  groups = [aap_group.vm_groups[each.value.security_profile].id]
+}

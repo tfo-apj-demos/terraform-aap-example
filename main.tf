@@ -40,9 +40,25 @@ resource "aap_host" "vm_hosts" {
     "backup_policy"    : each.value.backup_policy,
     "os_type"          : each.value.os_type,
     "storage_profile"  : each.value.storage_profile,
-    "tier"             : each.value.tier
+    "tier"             : each.value.tier,
+    "ansible_host"     : module.single_virtual_machine[each.key].ip_address  # Reference the IP address from the module
   })
   
   # Associate each host with its respective group based on security profile
   groups = [aap_group.vm_groups[each.value.security_profile].id]
 }
+
+/*resource "aap_job" "vm_demo_job" {
+  job_template_id = var.job_template_id
+  inventory_id    = aap_inventory.vm_inventory.id
+  extra_vars      = jsonencode({
+    # Pass any variables your job needs
+    # environment      = "dev",
+    # tfc_workspace_id = var.TFC_WORKSPACE_ID
+  })
+  
+  # Use triggers to control job execution. You can change or add triggers to execute based on inventory changes.
+  # triggers = {
+  #   "inventory" : aap_inventory.vm_inventory.id
+  # }
+}*/

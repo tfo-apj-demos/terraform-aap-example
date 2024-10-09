@@ -23,6 +23,14 @@ resource "aap_inventory" "vm_inventory" {
   variables   = jsonencode({ "os" : "Linux", "automation" : "ansible" })  # Add any relevant inventory-wide variables here
 }
 
+resource "aap_group" "vm_groups" {
+  for_each = { for key, vm in local.vm_config : vm.security_profile => vm if length(vm.security_profile) > 0 }
+  
+  inventory_id = aap_inventory.vm_inventory.id
+  name         = each.key  # The group name will be the security profile (e.g., web-server, db-server)
+  variables    = jsonencode({ "environment" : each.value.environment, "site" : each.value.site })
+}
+
 
 
 

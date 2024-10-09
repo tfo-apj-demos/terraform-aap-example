@@ -3,7 +3,7 @@ locals {
   vm_config = {
     vm1 = {
       hostname         = "web-01"
-      ad_domain        = var.domain
+      ad_domain        = "hashicorp.local"
       backup_policy    = "daily"
       environment      = "dev"
       os_type          = "linux"
@@ -15,7 +15,7 @@ locals {
     }
     vm2 = {
       hostname         = "db-01"
-      ad_domain        = var.domain
+      ad_domain        = "hashicorp.local"
       backup_policy    = "daily"
       environment      = "dev"
       os_type          = "linux"
@@ -27,7 +27,7 @@ locals {
     }
     vm3 = {
       hostname         = "app-01"
-      ad_domain        = var.domain
+      ad_domain        = "hashicorp.local"
       backup_policy    = "weekly"
       environment      = "test"
       os_type          = "linux"

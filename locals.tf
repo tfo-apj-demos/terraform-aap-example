@@ -22,8 +22,8 @@ locals {
       security_profile = "db-server"
       site             = "sydney"
       size             = "large"
-      storage_profile  = "premium"
-      tier             = "platinum"
+      storage_profile  = "standard"
+      tier             = "gold"
     }
     vm3 = {
       hostname         = "app-01"
@@ -35,7 +35,7 @@ locals {
       site             = "melbourne"
       size             = "small"
       storage_profile  = "standard"
-      tier             = "silver"
+      tier             = "gold"
     }
   }
 }

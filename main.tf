@@ -5,6 +5,7 @@ module "single_virtual_machine" {
   source  = "app.terraform.io/tfo-apj-demos/single-virtual-machine/vsphere"
   version = "~> 1"
 
+  hostname         = each.value.hostname
   ad_domain        = each.value.ad_domain
   backup_policy    = each.value.backup_policy
   environment      = each.value.environment

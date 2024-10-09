@@ -16,3 +16,13 @@ module "single_virtual_machine" {
   storage_profile  = each.value.storage_profile
   tier             = each.value.tier
 }
+
+resource "aap_inventory" "vm_inventory" {
+  name        = "GCVE VM Inventory"
+  description = "Inventory for deployed virtual machines in GCVE"
+  variables   = jsonencode({ "os" : "Linux", "automation" : "ansible" })  # Add any relevant inventory-wide variables here
+}
+
+
+
+

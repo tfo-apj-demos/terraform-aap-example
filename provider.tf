@@ -12,6 +12,5 @@ terraform {
 }
 
 provider "aap" {
-  host                 = var.host
   insecure_skip_verify = true
 }

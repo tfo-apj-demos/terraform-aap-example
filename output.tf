@@ -8,7 +8,7 @@ output "virtual_machine_names" {
 
 output "ansible_inventory" {
   value = {
-    for key, vm in local.vm_config :
+    for key, vm in var.vm_config :
     key => {
       "hostname"         = vm.hostname
       "security_profile" = vm.security_profile

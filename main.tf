@@ -58,7 +58,6 @@ resource "aap_job" "vm_demo_job" {
   # })
   
   # Use triggers to control job execution. You can change or add triggers to execute based on inventory changes.
-  # triggers = {
-  #   "inventory" : aap_inventory.vm_inventory.id
-  # }
+   triggers = var.vm_config
+   
 }

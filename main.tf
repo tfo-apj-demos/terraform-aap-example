@@ -57,7 +57,7 @@ resource "aap_job" "vm_demo_job" {
   #   # tfc_workspace_id = var.TFC_WORKSPACE_ID
   # })
   
-  # Use triggers to control job execution. You can change or add triggers to execute based on inventory changes.
-   triggers = var.vm_config
-   
+  # Use triggers to control job execution. Trigger if map changes
+   triggers = local.vm_names
+
 }

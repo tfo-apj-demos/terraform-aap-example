@@ -52,9 +52,9 @@ resource "aap_job" "vm_demo_job" {
   job_template_id = var.job_template_id
   inventory_id    = aap_inventory.vm_inventory.id
   # extra_vars      = jsonencode({
-  #   # Pass any variables your job needs
-  #   # environment      = "dev",
-  #   # tfc_workspace_id = var.TFC_WORKSPACE_ID
+  #   
+  #   
+  #  
   # })
   
   # Use triggers to control job execution. Trigger if map changes

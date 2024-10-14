@@ -3,7 +3,7 @@ module "single_virtual_machine" {
   for_each = var.vm_config
 
   source  = "app.terraform.io/tfo-apj-demos/single-virtual-machine/vsphere"
-  version = "~> 1.0"
+  version = "~> 1.4.0"
 
   hostname         = each.value.hostname
   ad_domain        = each.value.ad_domain

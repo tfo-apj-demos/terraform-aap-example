@@ -55,5 +55,5 @@ resource "aap_job" "vm_demo_job" {
   })
   
   # Use triggers to control job execution. Trigger if map changes
-   triggers = local.vm_names
+  # triggers = local.vm_names
 }

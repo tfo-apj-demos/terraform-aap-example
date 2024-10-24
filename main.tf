@@ -54,6 +54,6 @@ resource "aap_job" "vm_demo_job" {
   extra_vars      = jsonencode({
   })
   
-  Use triggers to control job execution. Trigger if map changes
+  # Use triggers to control job execution. Trigger if map changes
    triggers = local.vm_names
 }

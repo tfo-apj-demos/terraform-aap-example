@@ -27,7 +27,7 @@ variable "vm_config" {
 
   default = {
     vm1 = {
-      hostname         = "web-01"
+      hostname         = "web-02"
       ad_domain        = "hashicorp.local"
       backup_policy    = "daily"
       environment      = "dev"
@@ -39,7 +39,7 @@ variable "vm_config" {
       tier             = "gold"
     }
     vm2 = {
-      hostname         = "db-01"
+      hostname         = "db-02"
       ad_domain        = "hashicorp.local"
       backup_policy    = "daily"
       environment      = "dev"
@@ -51,7 +51,7 @@ variable "vm_config" {
       tier             = "gold"
     }
     vm3 = {
-      hostname         = "app-01"
+      hostname         = "app-02"
       ad_domain        = "hashicorp.local"
       backup_policy    = "weekly"
       environment      = "test"

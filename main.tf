@@ -48,12 +48,12 @@ resource "aap_host" "vm_hosts" {
   groups = [aap_group.vm_groups[each.value.security_profile].id]
 }
 
-# resource "aap_job" "vm_demo_job" {
-#   job_template_id = var.job_template_id
-#   inventory_id    = aap_inventory.vm_inventory.id
-#   extra_vars      = jsonencode({
-#   })
+resource "aap_job" "vm_demo_job" {
+  job_template_id = var.job_template_id
+  inventory_id    = aap_inventory.vm_inventory.id
+  extra_vars      = jsonencode({
+  })
   
-#   # Use triggers to control job execution. Trigger if map changes
-#   triggers = local.vm_names
-# }
+  # Use triggers to control job execution. Trigger if map changes
+  triggers = local.vm_names
+}

@@ -20,7 +20,8 @@ module "single_virtual_machine" {
 resource "aap_inventory" "vm_inventory" {
   name        = "GCVE VM Inventory - ${var.TFC_WORKSPACE_ID}"
   description = "Inventory for deployed virtual machines in GCVE"
-  variables   = jsonencode({ "os" : "Linux", "automation" : "ansible" })  # Add any relevant inventory-wide variables here
+   # Add any relevant inventory-wide variables here
+  variables   = jsonencode({ "os" : "Linux", "automation" : "ansible" })
 }
 
 resource "aap_group" "vm_groups" {

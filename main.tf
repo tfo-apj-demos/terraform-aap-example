@@ -50,6 +50,7 @@ resource "aap_host" "vm_hosts" {
 }
 
 resource "aap_job" "vm_demo_job" {
+  depends_on = [ module.single_virtual_machine ]
   job_template_id = var.job_template_id
   inventory_id    = aap_inventory.vm_inventory.id
   extra_vars      = jsonencode({

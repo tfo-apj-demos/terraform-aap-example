@@ -30,7 +30,7 @@ variable "vm_config" {
       os_type          = "linux"
       security_profile = "web-server"
       site             = "sydney"
-      size             = "medium"
+      size             = "xlarge"
       storage_profile  = "standard"
       tier             = "gold"
     }

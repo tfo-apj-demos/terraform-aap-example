@@ -66,12 +66,11 @@ output "all_vms_have_ip" {
 }
 
 resource "aap_job" "vm_demo_job" {
-  #depends_on = [local.vm_ip_addresses]
+  depends_on = [local.all_vms_have_ip]
+
   job_template_id = var.job_template_id
   inventory_id    = aap_inventory.vm_inventory.id
-  extra_vars      = jsonencode({
-  })
-  
-  # Use triggers to control job execution. Trigger if map changes
+  extra_vars      = jsonencode({})
+
   triggers = local.vm_names
 }

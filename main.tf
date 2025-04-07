@@ -49,8 +49,12 @@ resource "aap_host" "vm_hosts" {
   groups = [aap_group.vm_groups[each.value.security_profile].id]
 }
 
+locals {
+  vm_ip_addresses = [for vm in values(module.single_virtual_machine) : vm.ip_address]
+}
+
 resource "aap_job" "vm_demo_job" {
-  depends_on = [ for vm in values(module.single_virtual_machine) : vm.ip_address ]
+  depends_on = [local.vm_ip_addresses]
   job_template_id = var.job_template_id
   inventory_id    = aap_inventory.vm_inventory.id
   extra_vars      = jsonencode({

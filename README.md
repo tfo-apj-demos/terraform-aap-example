@@ -1,4 +1,4 @@
-# Terraform + Ansible Automation Platform (AAP) Integration Demo
+# Terraform Cloud/Enterprise + Ansible Automation Platform (AAP) Integration Demo
 
 This repository showcases an end-to-end integration between **Terraform** and **Ansible Automation Platform (AAP)**.
 

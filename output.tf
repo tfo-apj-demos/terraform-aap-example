@@ -6,6 +6,22 @@ output "virtual_machine_names" {
   }
 }
 
+locals {
+  # Build a list of IP addresses from each module instance
+  vm_ip_addresses = [for vm in values(module.single_virtual_machine) : vm.ip_address]
+
+  # Check that each VM has a valid (non-null, non-empty) IP address
+  all_vms_have_ip = length([for ip in local.vm_ip_addresses : ip if ip != null && ip != ""]) == length(var.vm_config)
+}
+
+output "vm_ip_addresses" {
+  value = local.vm_ip_addresses
+}
+
+output "all_vms_have_ip" {
+  value = local.all_vms_have_ip
+}
+
 # output "ansible_inventory" {
 #   value = {
 #     for key, vm in var.vm_config :

@@ -20,6 +20,7 @@ module "single_virtual_machine" {
 resource "aap_inventory" "vm_inventory" {
   name        = "GCVE VM Inventory - ${var.TFC_WORKSPACE_ID}"
   description = "Inventory for deployed virtual machines in GCVE"
+
    # Add any relevant inventory-wide variables here
   variables   = jsonencode({ "os" : "Linux", "automation" : "ansible" })
 }
@@ -29,6 +30,7 @@ resource "aap_group" "vm_groups" {
   
   inventory_id = aap_inventory.vm_inventory.id
   name         = replace(each.key, "-", "_")  # Replace hyphen with underscore
+  
   variables    = jsonencode({ "environment" : each.value.environment, "site" : each.value.site })
 }
 
@@ -49,25 +51,7 @@ resource "aap_host" "vm_hosts" {
   groups = [aap_group.vm_groups[each.value.security_profile].id]
 }
 
-locals {
-  # Build a list of IP addresses from each module instance
-  vm_ip_addresses = [for vm in values(module.single_virtual_machine) : vm.ip_address]
-
-  # Check that each VM has a valid (non-null, non-empty) IP address
-  all_vms_have_ip = length([for ip in local.vm_ip_addresses : ip if ip != null && ip != ""]) == length(var.vm_config)
-}
-
-output "vm_ip_addresses" {
-  value = local.vm_ip_addresses
-}
-
-output "all_vms_have_ip" {
-  value = local.all_vms_have_ip
-}
-
 resource "aap_job" "vm_demo_job" {
-  depends_on = [local.all_vms_have_ip]
-
   job_template_id = var.job_template_id
   inventory_id    = aap_inventory.vm_inventory.id
   extra_vars      = jsonencode({})

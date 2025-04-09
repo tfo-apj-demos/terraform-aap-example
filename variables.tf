@@ -54,7 +54,7 @@ variable "vm_config" {
       os_type          = "linux"
       security_profile = "app-server"
       site             = "melbourne"
-      size             = "xlarge"
+      size             = "small"
       storage_profile  = "standard"
       tier             = "gold"
     }

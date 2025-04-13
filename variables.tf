@@ -34,29 +34,29 @@ variable "vm_config" {
       storage_profile  = "standard"
       tier             = "gold"
     }
-    vm2 = {
-      hostname         = "db-03"
-      ad_domain        = "hashicorp.local"
-      backup_policy    = "daily"
-      environment      = "dev"
-      os_type          = "linux"
-      security_profile = "db-server"
-      site             = "sydney"
-      size             = "large"
-      storage_profile  = "standard"
-      tier             = "gold"
-    }
-    vm3 = {
-      hostname         = "app-03"
-      ad_domain        = "hashicorp.local"
-      backup_policy    = "weekly"
-      environment      = "test"
-      os_type          = "linux"
-      security_profile = "app-server"
-      site             = "melbourne"
-      size             = "small"
-      storage_profile  = "standard"
-      tier             = "gold"
-    }
+    # vm2 = {
+    #   hostname         = "db-03"
+    #   ad_domain        = "hashicorp.local"
+    #   backup_policy    = "daily"
+    #   environment      = "dev"
+    #   os_type          = "linux"
+    #   security_profile = "db-server"
+    #   site             = "sydney"
+    #   size             = "large"
+    #   storage_profile  = "standard"
+    #   tier             = "gold"
+    # }
+    # vm3 = {
+    #   hostname         = "app-03"
+    #   ad_domain        = "hashicorp.local"
+    #   backup_policy    = "weekly"
+    #   environment      = "test"
+    #   os_type          = "linux"
+    #   security_profile = "app-server"
+    #   site             = "melbourne"
+    #   size             = "small"
+    #   storage_profile  = "standard"
+    #   tier             = "gold"
+    # }
   }
 }
